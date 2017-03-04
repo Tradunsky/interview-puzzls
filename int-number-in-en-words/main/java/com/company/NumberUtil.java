@@ -47,7 +47,7 @@ public final class NumberUtil {
         return figures.get(hundreds) + " hundred ";
     }
 
-    public static int hundreds(int number) {
+    public static int hundredOf(int number) {
         int hundreds = number / 100;
         return hundreds * 100;
     }
@@ -55,10 +55,10 @@ public final class NumberUtil {
     public static String xTiesToString(int number) {
         int countOfTies = number / 10;
         int xTy = countOfTies * 10;
-        return figures.get(xTy) + " ";
+        return figures.get(xTy);
     }
 
-    public static int xTies(int number) {
+    public static int xTyOf(int number) {
         int countOfTies = number / 10;
         return countOfTies * 10;
     }
@@ -72,12 +72,13 @@ public final class NumberUtil {
         if (number > 99 && number < 1000) {
             //hundred
             numberInWords += hundredsToString(number);
-            number -= hundreds(number);
+            number -= hundredOf(number);
         }
         if (number > 20 && number < 100) {
             //Xty
             numberInWords += xTiesToString(number);
-            number -= xTies(number);
+            number -= xTyOf(number);
+            numberInWords += number > 0 ? "-" : " ";
         }
         if (number > 0 && number < 21) {
             numberInWords += numberToString(number);
@@ -90,7 +91,7 @@ public final class NumberUtil {
         return representHundredsInWords(millionPart) + "million ";
     }
 
-    public static int millions(int number) {
+    public static int millionOf(int number) {
         int millionPart = number / 1_000_000;
         return millionPart * 1_000_000;
     }
@@ -100,7 +101,7 @@ public final class NumberUtil {
         return representHundredsInWords(thousandPart) + "thousand ";
     }
 
-    public static int thousands(int number) {
+    public static int thousandOf(int number) {
         int thousandPart = number / 1000;
         return thousandPart * 1000;
     }
@@ -113,12 +114,12 @@ public final class NumberUtil {
             if (number > 999_999) {
                 //million
                 numberInWords += representMillionsInWords(number);
-                number -= millions(number);
+                number -= millionOf(number);
             }
             if (number > 999) {
                 //thousand
                 numberInWords += representThousandToString(number);
-                number -= thousands(number);
+                number -= thousandOf(number);
             }
             numberInWords += representHundredsInWords(number);
         }
