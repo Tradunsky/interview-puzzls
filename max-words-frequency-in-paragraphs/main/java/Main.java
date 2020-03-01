@@ -1,5 +1,3 @@
-package com.company;
-
 public class Main {
     private static final String text = "one two three\n" +
             "three four five\n" +
