@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class HashMapBasedSolution {
-    public static void printWordsInMaxParagragphs(String text) {
+    public static void printWordsInMaxParagraphs(String text) {
         Map<String, Map.Entry<Integer, Integer>> wordsFrequency = new HashMap<>();
         Pattern wordPattern = Pattern.compile(" ");
 
